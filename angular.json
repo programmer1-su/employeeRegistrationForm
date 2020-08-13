@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -88,6 +89,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +121,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "RegistrationForm"
+    }
+  },
+  "defaultProject": "RegistrationForm",
+  "cli": {
+    "analytics": "9d86f46b-394d-494c-b880-7a1380edac3c"
+  }
 }

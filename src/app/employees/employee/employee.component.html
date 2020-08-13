@@ -1,0 +1,62 @@
+<form [formGroup] = "service.form" class="normal-form">
+    <h1>新社員情報登録画面</h1>
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile>
+          <div class="controls-container">
+              <input type="hidden" formControlName="$key">
+              <mat-form-field>
+                <input formControlName="fullName" matInput placeholder="氏名*">
+                <mat-error>名前は必要です。</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <input formControlName="email" matInput placeholder="メール">
+                <mat-error>無効なメールアドレスを入力してください。</mat-error>
+              </mat-form-field>    
+              <mat-form-field>
+                <input formControlName="mobile" matInput placeholder="電話番号*" minlength="11">
+                <mat-error *ngIf="service.form.controls['mobile'].errors?.required">電話番号は必要です</mat-error>
+                <mat-error *ngIf="service.form.controls['mobile'].errors?.minlength">有効な桁数を入力して下さい。</mat-error>
+              </mat-form-field>    
+              <mat-form-field>
+                <input formControlName="country" matInput placeholder="国名">
+              </mat-form-field>
+              <mat-form-field>
+                <input formControlName="address" matInput placeholder="現在アドレス">
+              </mat-form-field>      
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="controls-container">
+            <div class="add-bottom-padding">
+                <mat-radio-group formControlName="gender">
+                    <mat-radio-button value="1">男</mat-radio-button>
+                    <mat-radio-button value="2">女</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <mat-form-field>
+                <mat-select formControlName="experience" placeholder="経験">
+                  <mat-option>None</mat-option>
+                  <ng-container *ngFor="let experience of experiences">
+                      <mat-option value="{{experience.id}}">
+                        {{experience.value}}
+                      </mat-option>
+                  </ng-container>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <input formControlName="entryDate" matInput [matDatepicker]="picker" placeholder="入社日">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div class="add-checkbox-padding">
+                <mat-checkbox formControlName="isPermanent">正社員</mat-checkbox>
+                <mat-checkbox formControlName="isTemporary">派遣社員</mat-checkbox>
+            </div>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div class="button-row">
+        <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">登録</button>
+        <button mat-raised-button color="warn" type="clear" (click)="onClear()">削除</button>
+    </div>
+</form>
