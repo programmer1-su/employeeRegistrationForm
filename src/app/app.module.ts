@@ -4,6 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,12 +20,17 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeesComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -41,10 +47,12 @@ import { RouterModule, Routes } from '@angular/router';
     MatCheckboxModule,
     MatNativeDateModule,
     MatButtonModule,
+    MatCardModule,
+    MatTableModule,
     RouterModule.forRoot([
       { path: '', redirectTo: '/', pathMatch: 'full' },
-      //{ path: 'register', component: RegistrationComponentComponent },
-      //{ path: 'login', component: LoginComponentComponent },
+      { path: '/register', component: RegisterComponent},
+      //{ path: 'login', component: LoginComponent },
        
      
     ]),
@@ -59,7 +67,9 @@ import { RouterModule, Routes } from '@angular/router';
     MatDatepickerModule,
     MatCheckboxModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatTableModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]
